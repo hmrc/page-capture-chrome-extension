@@ -1,7 +1,9 @@
 
 # page-capture-chrome-extension
 
-This is a placeholder README.md for a new repository
+page-capture-chrome-extension captures the HTML, scripts and stylesheets of the loaded page and fires them to the
+[accessibility-assessment-service](https://github.com/hmrc/accessibility-assessment/tree/main/accessibility-assessment-service/app) running in port 6010.
+To avoid CORS restrictions, the service under test, and the accessibility-assessment-service should be running on localhost.
 
 ### License
 
