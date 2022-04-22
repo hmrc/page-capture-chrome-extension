@@ -5,6 +5,16 @@ page-capture-chrome-extension captures the HTML, scripts and stylesheets of the 
 [accessibility-assessment-service](https://github.com/hmrc/accessibility-assessment/tree/main/accessibility-assessment-service/app) running in port 6010.
 To avoid CORS restrictions, the service under test, and the accessibility-assessment-service should be running on localhost.
 
-### License
+## Usage
+
+Encode the extension to a Base64 encoded string as follows:
+
+```bash
+./encodeExtension.sh
+```
+
+The Base64 encoded string can then be used by [webdriver-factory](https://github.com/hmrc/webdriver-factory) to add the extension to an instantiated Chrome browser via Chrome options. Specifically, see the `addPageCaptureChromeExtension` function within [BrowserFactory](https://github.com/hmrc/webdriver-factory/blob/main/src/main/scala/uk/gov/hmrc/webdriver/BrowserFactory.scala).
+
+## License
 
 This code is open source software licensed under the [Apache 2.0 License]("http://www.apache.org/licenses/LICENSE-2.0.html").
