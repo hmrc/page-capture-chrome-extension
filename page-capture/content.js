@@ -1,4 +1,4 @@
-var matchSrcAttLocalResource = RegExp('(^http:\/\/localhost:[0-9]{4,5})|(^[\.\/]{1}[a-zA-Z]{1}[\/a-zA-Z0-9-\.]+$)')
+let matchSrcAttLocalResource = RegExp('(^http:\/\/localhost:[0-9]{4,5})|(^[\.\/]{1}[a-zA-Z]{1}[\/a-zA-Z0-9-\.]+$)')
 
 function absoluteUrl(url) {
   const link = document.createElement("a");
