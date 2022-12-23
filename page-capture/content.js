@@ -1,5 +1,3 @@
-const matchSrcAttLocalResource = RegExp('(^http:\/\/localhost:[0-9]{4,5})|(^[\.\/]{1}[a-zA-Z]{1}[\/a-zA-Z0-9-\.]+$)')
-
 function absoluteUrl(url) {
   const link = document.createElement("a");
   link.href = url;
@@ -14,7 +12,7 @@ function sendToServer(input) {
 }
 
 function getFromUrl(url) {
-  return new Promise(function (res, rej) {
+  return new Promise(function (res) {
     chrome.runtime.sendMessage({
         contentScriptQuery: 'getFromUrl',
         input: absoluteUrl(url)
@@ -47,23 +45,6 @@ forEachNode(shadow.querySelectorAll('link[rel=stylesheet]'), sheet => {
     }
   ))
 })
-
-forEachNode(shadow.querySelectorAll('script'), script => {
-  if (script.src && matchSrcAttLocalResource.test(script.getAttribute('src'))) {
-    promisesToWaitFor.push(
-      getFromUrl(script.getAttribute('src'))
-        .then(output => {
-          files[output.filename] = output.contents
-          script.setAttribute('src', './' + output.filename)
-          if(output.errorMessage != null) {
-            errors.push(output.errorMessage)
-          }
-        }
-      )
-    )
-  }
- })
-
 
 Promise.all(promisesToWaitFor).then(function () {
   sendToServer({
