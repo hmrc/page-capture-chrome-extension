@@ -10,7 +10,19 @@ function sendToServer(input){
 }
 
 function getFromUrl(url) {
-  return fetch(url);
+    return new Promise((res) => {
+        fetch(url)
+            .then(function(response) {
+                response.text().then(function (text) {
+                    res({
+                        filename: url.replace(/:/g, '-').replace(/\//g, '_-_'),
+                        contents: text
+                    })
+                });
+            }).catch(function(err) {
+            console.log("Something went wrong!", err);
+        })
+    })
 }
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
