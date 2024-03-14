@@ -1,3 +1,4 @@
+:warning: This extension has been deprecated and replaced by [accessibility-assessment-extension](https://github.com/hmrc/accessibility-assessment-extension) (which is automatically included with [ui-test-runner](https://github.com/hmrc/ui-test-runner)). Please see the associated [announcement](https://confluence.tools.tax.service.gov.uk/x/KoX0Lw) and [migration guide](https://confluence.tools.tax.service.gov.uk/x/JoPoLw) for further details. :warning:
 
 # page-capture-chrome-extension
 
